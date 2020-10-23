@@ -90,6 +90,14 @@ public class TransferTest {
             val authInfo = DataHelper.getWrongAuthInfo();
             loginPage.invalidLogin(authInfo);
         }
+        @Test
+        void shouldInvalidCode(){
+            val loginPage = new LoginPage();
+            val authInfo = DataHelper.getAuthInfo();
+            val verificationPage = loginPage.validLogin(authInfo);
+            val codeVerify = DataHelper.getWrongVerificationCodeFor();
+            verificationPage.invalidVerify(codeVerify);
+        }
     }
 }
 

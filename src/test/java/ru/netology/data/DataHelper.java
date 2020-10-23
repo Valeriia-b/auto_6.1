@@ -29,7 +29,7 @@ public class DataHelper {
     public static VerificationCode getVerificationCodeFor() {
         return new VerificationCode("12345");
     }
-
+    public static VerificationCode getWrongVerificationCodeFor() {return new VerificationCode("123");}
 
     @Value
     public static class TransferInfo {
@@ -44,7 +44,5 @@ public class DataHelper {
         return new String("5559 0000 0000 0002");
     }
 
-    public static String getCard3() {
-        return new String("5559 0000 0000 0003");
-    }
+    public static String getCard3() { return new String("5559 0000 0000 0003");}
 }

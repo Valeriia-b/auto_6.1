@@ -37,14 +37,4 @@ public class DashboardPage {
         int value = Integer.parseInt(balancePart.substring(0, balancePart.indexOf("р")).strip());
         return value;
     }
-
-/*    public int getNewBalanceCard1(int transfer) {
-        int currentBalance = getCurrentBalanceCard1();
-        return currentBalance + transfer;
-    }
-
-    public int getNewBalanceCard2(int transfer) {
-        int currentBalance = getCurrentBalanceCard2();
-        return currentBalance + transfer;*/
-/*    }*/
 }
