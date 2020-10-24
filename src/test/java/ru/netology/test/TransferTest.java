@@ -29,7 +29,7 @@ public class TransferTest {
         }
 
         @Test
-        void shouldTransferFromCard1ToCard2() {
+        void shouldTransferFromCard2ToCard1() {
             val dashboardPage = new DashboardPage();
             int expectedBalance1 = dashboardPage.getCurrentBalanceCard1() + Integer.parseInt(amount);
             int expectedBalance2 = dashboardPage.getCurrentBalanceCard2() - Integer.parseInt(amount);
@@ -43,7 +43,7 @@ public class TransferTest {
         }
 
         @Test
-        void shouldTransferFromCard2ToCard1() {
+        void shouldTransferFromCard1ToCard2() {
             val dashboardPage = new DashboardPage();
             int expectedBalance1 = dashboardPage.getCurrentBalanceCard1() - Integer.parseInt(amount);
             int expectedBalance2 = dashboardPage.getCurrentBalanceCard2() + Integer.parseInt(amount);
@@ -79,6 +79,18 @@ public class TransferTest {
             transferPage.cancelTransfer();
             assertEquals(expectedBalance1, dashboardPage.getCurrentBalanceCard1());
             assertEquals(expectedBalance2, dashboardPage.getCurrentBalanceCard2());
+        }
+
+        @Test
+        void shouldNotTransferIfNotEnoughMoney(){
+            val dashboardPage = new DashboardPage();
+            val amountMoreBalance = dashboardPage.getCurrentBalanceCard2() + 1000;
+            dashboardPage.depositCard1();
+            val transferPage = new TransferPage();
+            transferPage.setAmount(String.valueOf(amountMoreBalance));
+            transferPage.setFromCardField(DataHelper.getCard2());
+            transferPage.getTransfer();
+            transferPage.invalidTransfer();
         }
     }
 
